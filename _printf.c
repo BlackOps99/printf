@@ -41,8 +41,6 @@ int _printf(const char *format, ...)
 		current++;
 	}
 
-	len_of_str = strlen(format);
-
 	va_end(ap);
 	return (len_of_str);
 }
