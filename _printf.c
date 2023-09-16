@@ -30,12 +30,13 @@ int _printf(const char *format, ...)
 			current++;
 			if (*current != '\0')
 			{
-				len_of_str = handle_print(current, ap);
+				len_of_str += handle_print(current, ap);
 			}
 		}
 		else
 		{
 			_putchar(*current);
+			len_of_str++;
 		}
 		current++;
 	}
