@@ -56,9 +56,7 @@ int handle_print(const char *to_type, va_list value)
 	{
 	case 'c':
 	{
-		int c = va_arg(value, int);
-
-		return (_putchar(c));
+		return (toChar(value));
 	}
 	case 's':
 	{
