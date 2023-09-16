@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 	const char *current;
 
 	va_list ap;
+
 	va_start(ap, format);
 
 	if (!format)
@@ -39,6 +40,8 @@ int _printf(const char *format, ...)
 		current++;
 	}
 
+	len_of_str = strlen(format);
+
 	va_end(ap);
 	return (len_of_str);
 }
@@ -55,11 +58,12 @@ int handle_print(const char *to_type, va_list value)
 	case 'c':
 	{
 		int c = va_arg(value, int);
-		return _putchar(c);
+
+		return (_putchar(c));
 	}
 	case 's':
 	{
-		return toString(value);
+		return (toString(value));
 	}
 	case '%':
 	{
