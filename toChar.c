@@ -8,5 +8,7 @@ int toChar(va_list value)
 {
 	int c = va_arg(value, int);
 
-	return (_putchar(c));
+	_putchar(c);
+
+	return (1);
 }
