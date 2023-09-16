@@ -64,8 +64,7 @@ int handle_print(const char *to_type, va_list value)
 	}
 	case '%':
 	{
-		_putchar(37);
-		return (1);
+		return (toRatio());
 	}
 	default:
 		_putchar('%');
