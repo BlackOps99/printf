@@ -5,5 +5,7 @@
  */
 int toRatio(void)
 {
-	return (_putchar(37));
+	_putchar(37);
+
+	return (1);
 }
