@@ -33,6 +33,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			_putchar(*current);
+		}
+		if (*current != '\n')
+		{
 			len_of_str++;
 		}
 		current++;
