@@ -9,8 +9,9 @@ int toBin(va_list value)
 	unsigned int result = va_arg(value, unsigned int);
 	int len = 0;
 	int flag = 0;
+	int i = 31;
 
-	for (int i = 31; i >= 0; i--)
+	for (; i >= 0; i--)
 	{
 		int bit = (result >> i) & 1;
 
