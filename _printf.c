@@ -7,17 +7,10 @@ int handle_print(const char *to_type, va_list value);
  * @format: the format that will be worked with
  * Return: length of format
  */
-int _printf(const char *const format, ...)
+int _printf(const char *format, ...)
 {
-	convert_match m[] = {
-	    {"%s", toString},
-	    {"%c", toChar},
-	    {"%%", toRatio},
-	    {"%i", toInt}};
-
 	int len_of_str = 0;
-	int i = 0;
-	int j = 0;
+	const char *current;
 
 	va_list ap;
 
@@ -29,23 +22,22 @@ int _printf(const char *const format, ...)
 		return (-1);
 	}
 
-Here:
-	while (format[i] != '\0')
+	current = format;
+
+	while (*current != '\0')
 	{
-		j = 3;
-		while (j >= 0)
+		if (*current == '%' && *(current + 1) != '\0')
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
-			{
-				len_of_str += m[j].f(ap);
-				i = i + 2;
-				goto Here;
-			}
-			j--;
+			current++;
+			len_of_str += handle_print(current, ap);
+			current++;
 		}
-		_putchar(format[i]);
-		len_of_str++;
-		i++;
+		else
+		{
+			putchar(*current);
+			len_of_str++;
+			current++;
+		}
 	}
 
 	va_end(ap);
