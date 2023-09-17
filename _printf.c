@@ -29,6 +29,11 @@ int _printf(const char *format, ...)
 			{
 				len_of_str += handle_print(current, ap);
 			}
+			if (*current == '\0')
+			{
+				va_end(ap);
+				return (-1);
+			}
 		}
 		else
 		{
