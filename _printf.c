@@ -29,13 +29,12 @@ int _printf(const char *format, ...)
 			{
 				len_of_str += handle_print(current, ap);
 			}
-			len_of_str++;
 		}
 		else
 		{
 			_putchar(*current);
+			len_of_str++;
 		}
-		len_of_str++;
 		current++;
 	}
 
