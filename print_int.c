@@ -9,35 +9,75 @@
 int toInt(va_list value)
 {
 int n = va_arg(value, int);
-int count = 0;
-unsigned int un_n, num, tmp;
+unsigned int un_n;
 
-un_n = n;
-if (un_n < 0)
+if (n < 0)
 {
-_putchar('-');
 un_n = -n;
-count++;
+_putchar('-');
 }
+else
+{
+un_n = n;
+}
+
 if (un_n == 0)
 {
 _putchar('0');
-return (++count);
+return (1);
 }
 
-for (tmp = un_n; tmp != 0; tmp /= 10)
+return (print_number(un_n));
+}
+
+/**
+* print_number - Prints an unsigned integer
+* @number: The unsigned integer
+*
+* Return: The number of digits printed
+*/
+int print_number(unsigned int number)
 {
-count++;
-}
+int count = count_digits(number);
 
-for (num = 1; count - 1 > 0; num *= 10, count--)
+for (int i = count; i > 0; i--)
 {
+int digit = extract_digit(number, i);
+_putchar(digit + '0');
 }
 
-for (; num > 0; num /= 10)
+return (count);
+}
+
+/**
+* count_digits - Counts the number of digits in a number
+* @num: The number
+*
+* Return: The number of digits
+*/
+int count_digits(unsigned int num)
 {
-_putchar((un_n / num) % 10 + '0');
+int digits = 0;
+while (num)
+{
+digits++;
+num /= 10;
+}
+return (digits);
 }
 
-return (n < 0 ? count + 1 : count);
+/**
+* extract_digit - Extracts the desired digit from a number
+* @num: The number
+* @index: The index (from the right, starting with 1)
+*
+* Return: The desired digit
+*/
+int extract_digit(unsigned int num, int index)
+{
+for (int i = 0; i < index - 1; i++)
+{
+num /= 10;
+}
+return (num % 10);
 }
