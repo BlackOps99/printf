@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0') || (format[0] == '%' && format[1] == ' '))
 		return (-1);
 
 	current = format;
@@ -28,11 +28,6 @@ int _printf(const char *format, ...)
 			if (*current != '\0')
 			{
 				len_of_str += handle_print(current, ap);
-			}
-			if (*current == '\0')
-			{
-				va_end(ap);
-				return (-1);
 			}
 		}
 		else
