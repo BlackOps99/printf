@@ -89,6 +89,8 @@ int handle_print(const char *to_type, va_list value)
 	case 'd':
 	case 'i':
 		return (toInt(value));
+	case 'b':
+		return (toBin(value));
 	default:
 		return (0);
 	}
