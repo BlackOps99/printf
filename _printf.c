@@ -54,12 +54,14 @@ int isCharInArray(char searchValue)
 {
 	int i = 0;
 
-	char array[3] = {
+	char array[5] = {
 	    'c',
 	    's',
-	    '%'};
+	    '%',
+	    'd',
+	    'i'};
 
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (array[i] == searchValue)
 		{
