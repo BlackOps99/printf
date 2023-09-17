@@ -66,6 +66,6 @@ int handle_print(const char *to_type, va_list value)
 	default:
 		_putchar('%');
 		_putchar(*to_type);
-		return (-1);
+		return (1);
 	}
 }
