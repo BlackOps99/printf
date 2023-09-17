@@ -9,44 +9,35 @@
 int toInt(va_list value)
 {
 int n = va_arg(value, int);
-int num, digit, count = 0;
-unsigned int un_n;
+int count = 0;
+unsigned int un_n, num, tmp;
 
-if (n < 0)
+un_n = n;
+if (un_n < 0)
 {
-un_n = -n;
 _putchar('-');
+un_n = -n;
 count++;
 }
-else
-{
-un_n = n;
-}
-
 if (un_n == 0)
 {
 _putchar('0');
-count++;
-return (count);
+return (++count);
 }
 
-num = un_n;
-while (num != 0)
+for (tmp = un_n; tmp != 0; tmp /= 10)
 {
-num /= 10;
 count++;
 }
 
-while (count > 0)
+for (num = 1; count - 1 > 0; num *= 10, count--)
 {
-digit = un_n;
-for (int i = 0; i < count - 1; i++)
-{
-digit /= 10;
-}
-_putchar((digit % 10) + '0');
-count--;
 }
 
-return (un_n < 0 ? count + 1 : count);
+for (; num > 0; num /= 10)
+{
+_putchar((un_n / num) % 10 + '0');
+}
+
+return (n < 0 ? count + 1 : count);
 }
