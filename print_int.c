@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 * toInt - Print an integer as a string
 * @value: The integer
@@ -9,75 +8,40 @@
 int toInt(va_list value)
 {
 int n = va_arg(value, int);
+int num, digit, count = 0;
 unsigned int un_n;
 
 if (n < 0)
 {
 un_n = -n;
 _putchar('-');
+count++;
 }
 else
 {
 un_n = n;
 }
-
 if (un_n == 0)
 {
 _putchar('0');
-return (1);
-}
-
-return (print_number(un_n));
-}
-
-/**
-* print_number - Prints an unsigned integer
-* @number: The unsigned integer
-*
-* Return: The number of digits printed
-*/
-int print_number(unsigned int number)
-{
-int count = count_digits(number);
-
-for (int i = count; i > 0; i--)
-{
-int digit = extract_digit(number, i);
-_putchar(digit + '0');
-}
-
+count++;
 return (count);
 }
-
-/**
-* count_digits - Counts the number of digits in a number
-* @num: The number
-*
-* Return: The number of digits
-*/
-int count_digits(unsigned int num)
-{
-int digits = 0;
-while (num)
-{
-digits++;
-num /= 10;
-}
-return (digits);
-}
-
-/**
-* extract_digit - Extracts the desired digit from a number
-* @num: The number
-* @index: The index (from the right, starting with 1)
-*
-* Return: The desired digit
-*/
-int extract_digit(unsigned int num, int index)
-{
-for (int i = 0; i < index - 1; i++)
+num = un_n;
+while (num != 0)
 {
 num /= 10;
+count++;
 }
-return (num % 10);
+while (count > 0)
+{
+digit = un_n;
+for (int i = 0; i < count - 1; i++)
+{
+digit /= 10;
+}
+_putchar((digit % 10) + '0');
+count--;
+}
+:return (un_n < 0 ? count + 1 : count);
 }
