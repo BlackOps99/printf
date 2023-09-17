@@ -1,5 +1,6 @@
 #include "main.h"
 
+int isCharInArray(char searchValue);
 int handle_print(const char *to_type, va_list value);
 
 /**
