@@ -30,14 +30,13 @@ int _printf(const char *format, ...)
 		{
 			current++;
 			len_of_str += handle_print(current, ap);
-			current++;
 		}
 		else
 		{
-			putchar(*current);
+			_putchar(*current);
 			len_of_str++;
-			current++;
 		}
+		current++;
 	}
 
 	va_end(ap);
