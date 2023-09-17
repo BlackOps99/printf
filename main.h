@@ -13,5 +13,5 @@ int _putchar(char c);
 int toChar(va_list value);
 int toString(va_list value);
 int toRatio(void);
-
+int toInt(va_list value);
 #endif
