@@ -23,13 +23,10 @@ int _printf(const char *format, ...)
 
 	while (*current != '\0')
 	{
-		if (*current == '%')
+		if (*current == '%' && *(current + 1) != '\0')
 		{
 			current++;
-			if (*current != '\0')
-			{
-				len_of_str += handle_print(current, ap);
-			}
+			len_of_str += handle_print(current, ap);
 		}
 		else
 		{
@@ -63,8 +60,6 @@ int handle_print(const char *to_type, va_list value)
 	case 'i':
 		return (toInt(value));
 	default:
-		_putchar('%');
-		_putchar(*to_type);
 		return (0);
 	}
 }
