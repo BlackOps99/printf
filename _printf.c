@@ -25,10 +25,7 @@ int _printf(const char *format, ...)
 		if (*current == '%')
 		{
 			current++;
-			if (*current != '\0')
-			{
-				len_of_str += handle_print(current, ap);
-			}
+			len_of_str += handle_print(current, ap);
 		}
 		else
 		{
