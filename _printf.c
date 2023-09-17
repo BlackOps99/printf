@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 {
 	int len_of_str = 0;
 	const char *current;
+	const char *setn;
 
 	va_list ap;
 
@@ -28,15 +29,16 @@ int _printf(const char *format, ...)
 	{
 		if (*current == '%' && *(current + 1) != '\0')
 		{
-			current++;
-			len_of_str += handle_print(current, ap);
+			setn = current + 1;
+			len_of_str += handle_print(setn, ap);
+			current = current + 2;
 		}
 		else
 		{
 			_putchar(*current);
 			len_of_str++;
+			current++;
 		}
-		current++;
 	}
 
 	va_end(ap);
