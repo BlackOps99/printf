@@ -1,4 +1,9 @@
 #include "main.h"
+
+int print_number(unsigned int number);
+int count_digits(unsigned int num);
+int extract_digit(unsigned int num, int index);
+
 /**
  * toInt - Print an integer as a string
  * @value: The integer
@@ -38,8 +43,9 @@ int toInt(va_list value)
 int print_number(unsigned int number)
 {
 	int count = count_digits(number);
+	int i = 0;
 
-	for (int i = count; i > 0; i--)
+	for (i = count; i > 0; i--)
 	{
 		int digit = extract_digit(number, i);
 
@@ -76,9 +82,12 @@ int count_digits(unsigned int num)
  */
 int extract_digit(unsigned int num, int index)
 {
-	for (int i = 0; i < index - 1; i++)
+	int i = 0;
+
+	for (i = 0; i < index - 1; i++)
 	{
 		num /= 10;
 	}
+
 	return (num % 10);
 }
