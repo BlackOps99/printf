@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			current++;
 			if (*current != '\0')
 			{
-				handle_print(current, ap);
+				len_of_str += handle_print(current, ap);
 			}
 		}
 		else
