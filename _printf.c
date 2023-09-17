@@ -7,33 +7,45 @@ int handle_print(const char *to_type, va_list value);
  * @format: the format that will be worked with
  * Return: length of format
  */
-int _printf(const char *format, ...)
+int _printf(const char *const format, ...)
 {
+	convert_match m[] = {
+	    {"%s", toString},
+	    {"%c", toChar},
+	    {"%%", toRatio},
+	    {"%i", toInt}};
+
 	int len_of_str = 0;
-	const char *current;
+	int i = 0;
+	int j = 0;
 
 	va_list ap;
 
 	va_start(ap, format);
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-
-	current = format;
-
-	while (*current != '\0')
 	{
-		if (*current == '%' && *(current + 1) != '\0')
+		va_end(ap);
+		return (-1);
+	}
+
+Here:
+	while (format[i] != '\0')
+	{
+		j = 3;
+		while (j >= 0)
 		{
-			current++;
-			len_of_str += handle_print(current, ap);
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			{
+				len_of_str += m[j].f(ap);
+				i = i + 2;
+				goto Here;
+			}
+			j--;
 		}
-		else
-		{
-			_putchar(*current);
-			len_of_str++;
-		}
-		current++;
+		_putchar(format[i]);
+		len_of_str++;
+		i++;
 	}
 
 	va_end(ap);

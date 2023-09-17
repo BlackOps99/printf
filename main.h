@@ -8,7 +8,18 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int _printf(const char *format, ...);
+/**
+ * struct format - match the conversion specifiers for printf
+ * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
+ * @f: type pointer to function for the conversion specifier
+ */
+typedef struct format
+{
+	char *id;
+	int (*f)();
+} convert_match;
+
+int _printf(const char *const format, ...);
 int _putchar(char c);
 int toChar(va_list value);
 int toString(va_list value);
