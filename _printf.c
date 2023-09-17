@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 
 	while (*current != '\0')
 	{
-		if (*current == '%' && *(current + 1) != '\0')
+		if (*current == '%' && isCharInArray(*(current + 1)) != 0)
 		{
 			setn = current + 1;
 			len_of_str += handle_print(setn, ap);
@@ -44,7 +44,29 @@ int _printf(const char *format, ...)
 	va_end(ap);
 	return (len_of_str);
 }
+/**
+ * isCharInArray - function that check if correct format
+ * @searchValue: type char
+ * Return: 1 if found else 0
+ */
+int isCharInArray(char searchValue)
+{
+	int i = 0;
 
+	char array[3] = {
+	    'c',
+	    's',
+	    '%'};
+
+	for (i = 0; i < 3; i++)
+	{
+		if (array[i] == searchValue)
+		{
+			return (1);
+		}
+	}
+	return (0);
+}
 /**
  * handle_print - function that handles the type format
  * @to_type: type char pointer
