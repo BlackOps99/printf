@@ -34,8 +34,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			_putchar(*current);
-			len_of_str++;
 		}
+		len_of_str++;
 		current++;
 	}
 
