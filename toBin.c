@@ -1,4 +1,7 @@
 #include "main.h"
+
+int countBits(unsigned int num);
+
 /**
  * toBin - unsigned int to converted it to binary
  * @value: unsigned integer
@@ -7,27 +10,43 @@
 int toBin(va_list value)
 {
 	unsigned int result = va_arg(value, unsigned int);
-	int len = 0;
-	int flag = 0;
-	int i = 31;
 
-	for (; i >= 0; i--)
+	int i;
+
+	int leadingZero = 1;
+
+	for (i = 31; i >= 0; i--)
 	{
-		int bit = (result >> i) & 1;
+		char bit = ((result >> i) & 1) + '0';
 
-		if (bit || flag)
+		if (bit == '1')
 		{
-			_putchar(bit + '0');
-			len++;
-			flag = 1;
+			leadingZero = 0;
+		}
+
+		if (!leadingZero)
+		{
+			_putchar(bit);
 		}
 	}
 
-	if (len == 0)
+	return (countBits(result));
+}
+
+/**
+ * countBits - calculate the number of binary
+ * @num: unsigned integer
+ * Return: number of binary
+ */
+int countBits(unsigned int num)
+{
+	int count = 0;
+
+	while (num > 0)
 	{
-		_putchar('0');
-		len = 1;
+		count++;
+		num >>= 1;
 	}
 
-	return (len);
+	return (count);
 }
