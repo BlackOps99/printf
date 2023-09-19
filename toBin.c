@@ -1,4 +1,6 @@
 #include "main.h"
+
+int countBits(unsigned int num);
 /**
  * toBin - unsigned int to converted it to binary
  * @value: unsigned integer
