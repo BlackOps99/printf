@@ -9,6 +9,10 @@ int toInt(va_list value)
 {
 	int n = va_arg(value, int);
 	int i = 0;
+	int num_digits = 0;
+	int temp = n;
+	char buffer[12];
+	int j;
 
 	if (n < 0)
 	{
@@ -22,26 +26,21 @@ int toInt(va_list value)
 		return (1);
 	}
 
-	int num_digits = 0;
-	int temp = n;
-
 	while (temp != 0)
 	{
 		temp /= 10;
 		num_digits++;
 	}
 
-	char buffer[12];
-
 	buffer[num_digits] = '\0';
 
-	for (int j = num_digits - 1; j >= 0; j--)
+	for (j = num_digits - 1; j >= 0; j--)
 	{
 		buffer[j] = (n % 10) + '0';
 		n /= 10;
 	}
 
-	for (int j = 0; j < num_digits; j++)
+	for (j = 0; j < num_digits; j++)
 	{
 		_putchar(buffer[j]);
 		i++;
