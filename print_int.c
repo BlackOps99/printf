@@ -8,7 +8,6 @@ int extract_digit(unsigned int num, int index);
  *
  * Return: The number of digits printed
  */
-
 int toInt(va_list value)
 {
 	int n = va_arg(value, int);
