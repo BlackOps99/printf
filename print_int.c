@@ -1,4 +1,37 @@
 #include "main.h"
+int print_number(unsigned int number);
+int count_digits(unsigned int num);
+int extract_digit(unsigned int num, int index);
+/**
+ * toInt - Print an integer as a string
+ * @value: The integer
+ *
+ * Return: The number of digits printed
+ */
+
+int toInt(va_list value)
+{
+	int n = va_arg(value, int);
+	unsigned int un_n;
+
+	if (n < 0)
+	{
+		un_n = -n;
+		_putchar('-');
+	}
+	else
+	{
+		un_n = n;
+	}
+
+	if (un_n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+
+	return (print_number(un_n));
+}
 
 /**
 * count_digits - Count the digits in a number.
