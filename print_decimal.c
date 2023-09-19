@@ -10,6 +10,7 @@ int toDecimal(va_list value)
 	int i = 0;
 	int exp = 1;
 	int should_invert = 0;
+	int digit;
 
 	if (n < 0)
 	{
@@ -31,8 +32,10 @@ int toDecimal(va_list value)
 
 	do {
 		exp /= 10;
-		int digit = n / exp;
+		digit = n / exp;
+
 		_putchar(should_invert ? '9' - digit : digit + '0');
+
 		i++;
 		n %= exp;
 	} while (exp > 1);
