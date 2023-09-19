@@ -7,42 +7,43 @@
  */
 int toInt(va_list value)
 {
-	int len, powten, j, digit, n, count = 0, num;
+	int n = va_arg(value, int);
+	int count = 0;
+	int numDigits = 0;
+	int temp = n;
+	int divisor = 1;
+	int digit, i;
 
-	n = va_arg(value, int);
-	if (n != 0)
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			_putchar('-');
-			count++;
-		}
-		num = n;
-		len = 0;
-		while (num != 0)
-		{
-			num /= 10;
-			len++;
-		}
-		powten = 1;
-		for (j = 1; j <= len - 1; j++)
-			powten *= 10;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / powten;
-			if (n < 0)
-				_putchar((digit * -1) + 48);
-			else
-				_putchar(digit + '0');
-			count++;
-			n -= digit * powten;
-			powten /= 10;
-		}
+		n = -n;
+		putchar('-');
+		count++;
 	}
-	else
+
+	if (n == 0)
 	{
-		_putchar('0');
+		putchar('0');
 		return (1);
+	}
+
+	while (temp > 0)
+	{
+		temp /= 10;
+		numDigits++;
+	}
+	for (i = 1; i < numDigits; i++)
+	{
+		divisor *= 10;
+	}
+	while (divisor > 0)
+	{
+		digit = n / divisor;
+
+		putchar('0' + digit);
+		count++;
+		n -= digit * divisor;
+		divisor /= 10;
 	}
 	return (count);
 }
