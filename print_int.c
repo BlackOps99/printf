@@ -11,7 +11,7 @@ int toInt(va_list value)
 	int i = 0;
 	int num_digits = 0;
 	int temp = n;
-	char buffer[12];
+	char buffer[20];
 	int j;
 
 	if (n < 0)
