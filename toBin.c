@@ -1,44 +1,47 @@
 #include "main.h"
-char *convert(unsigned long int num, int base, int lowercase);
 /**
  * toBin - unsigned int to converted it to binary
  * @value: unsigned integer
  * Return: binary
  */
+int countBits(unsigned int num);
+
 int toBin(va_list value)
 {
-	unsigned int num = va_arg(value, unsigned int);
-	char *str = convert(num, 2, 0);
+	unsigned int result = va_arg(value, unsigned int);
 
-	int len;
+	int i;
 
-	for (len = 0; str[len] != '\0'; len++)
-		_putchar(str[len]);
+	int leadingZero = 1;
 
-	return (len);
+	for (i = 31; i >= 0; i--)
+	{
+		char bit = ((result >> i) & 1) + '0';
+		if (bit == '1')
+		{
+			leadingZero = 0;
+		}
+		if (!leadingZero)
+		{
+			_putchar(bit);
+		}
+	}
+
+	return (countBits(result));
 }
+
 /**
- * convert - converts number and base into string
- * @num: input number
- * @base: input base
- * @lowercase: flag if hexa values need to be lowercase
- * Return: result string
+ * countBits - calculate the number of binary
+ * @num: unsigned integer
+ * Return: number of binary
  */
-char *convert(unsigned long int num, int base, int lowercase)
+int countBits(unsigned int num)
 {
-	static char *rep;
-	static char buffer[50];
-	char *ptr;
-
-	rep = (lowercase)
-		  ? "0123456789abcdef"
-		  : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
-	do {
-		*--ptr = rep[num % base];
-		num /= base;
-	} while (num != 0);
-
-	return (ptr);
+	int count = 0;
+	while (num > 0)
+	{
+		count++;
+		num >>= 1;
+	}
+	return count;
 }
