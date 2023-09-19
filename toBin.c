@@ -6,39 +6,30 @@
  */
 int toBin(va_list val)
 {
-	unsigned int length, power_of_two, index, digit, value, number;
-	int character_count = 0;
+	int num = va_arg(val, unsigned int);
+	int i = 0;
+	int count = 0;
+	int j;
+	int binary[32];
 
-	number = va_arg(val, unsigned int);
-
-	if (number == 0)
+	if (num == 0)
 	{
 		_putchar('0');
-		return (1);
+		count++;
 	}
-
-	value = number;
-	length = 0;
-
-	while (value != 0)
+	else
 	{
-		value /= 2;
-		length++;
+		while (num > 0)
+		{
+			binary[i] = num % 2;
+			num = num / 2;
+			i++;
+		}
+		for (j = i - 1; j >= 0; j--)
+		{
+			_putchar(binary[j] + '0');
+			count++;
+		}
 	}
-
-	power_of_two = 1;
-
-	for (index = 1; index <= length - 1; index++)
-		power_of_two *= 2;
-
-	for (index = 1; index <= length; index++)
-	{
-		digit = number / power_of_two;
-		_putchar(digit + '0');
-		character_count++;
-		number -= digit * power_of_two;
-		power_of_two /= 2;
-	}
-
-	return (character_count);
+	return (count);
 }
