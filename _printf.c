@@ -88,7 +88,7 @@ int handle_print(const char *to_type, va_list value)
 		return (toRatio());
 	case 'i':
 	case 'd':
-		return (toDecimal(value));
+		return (toInt(value));
 	case 'b':
 		return (toBin(value));
 	default:
