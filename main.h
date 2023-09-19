@@ -16,6 +16,7 @@ int toString(va_list value);
 int toRatio(void);
 int toInt(va_list value);
 int toDecimal(va_list value);
-int toBin(va_list value);
+int toBin(va_list val);
+int toUnsignedInt(va_list val);
 
 #endif /* MAIN_H */

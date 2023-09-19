@@ -54,15 +54,16 @@ int isCharInArray(char searchValue)
 {
 	int i = 0;
 
-	char array[6] = {
+	char array[7] = {
 	    'c',
 	    's',
 	    '%',
 	    'd',
 	    'i',
-	    'b'};
+	    'b',
+	    'u'};
 
-	for (i = 0; i < 6; i++)
+	for (i = 0; i < 7; i++)
 	{
 		if (array[i] == searchValue)
 		{
@@ -92,6 +93,8 @@ int handle_print(const char *to_type, va_list value)
 		return (toInt(value));
 	case 'b':
 		return (toBin(value));
+	case 'u':
+		return (toUnsignedInt(value));
 	default:
 		return (0);
 	}
