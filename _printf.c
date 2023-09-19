@@ -59,7 +59,8 @@ int isCharInArray(char searchValue)
 	    's',
 	    '%',
 	    'd',
-	    'i'};
+	    'i',
+	    'b'};
 
 	for (i = 0; i < 5; i++)
 	{
