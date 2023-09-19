@@ -7,31 +7,43 @@
  */
 int toInt(va_list value)
 {
-	int n;
-	int div;
-	int len;
-	unsigned int num;
-
-	n = va_arg(value, int);
-	div = 1;
-	len = 0;
+	int n = va_arg(value, int);
+	int i = 0;
+	int num_digits = 0;
+	int temp = n;
+	char buffer[12];
+	int j;
 
 	if (n < 0)
 	{
-		len += putchar('-');
-		num = n * -1;
+		_putchar('-');
+		n = -n;
+		i++;
 	}
-	else
-		num = n;
-
-	for (; num / div > 9;)
-		div *= 10;
-
-	for (; div != 0;)
+	if (n == 0)
 	{
-		len += putchar('0' + num / div);
-		num %= div;
-		div /= 10;
+		_putchar('0');
+		return (1);
 	}
-	return (len);
+
+	while (temp != 0)
+	{
+		temp /= 10;
+		num_digits++;
+	}
+
+	buffer[num_digits] = '\0';
+
+	for (j = num_digits - 1; j >= 0; j--)
+	{
+		buffer[j] = (n % 10) + '0';
+		n /= 10;
+	}
+
+	for (j = 0; j < num_digits; j++)
+	{
+		_putchar(buffer[j]);
+		i++;
+	}
+	return (i);
 }
