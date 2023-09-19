@@ -11,7 +11,7 @@ int toInt(va_list value)
 	int i = 0;
 	int num_digits = 0;
 	int temp = n;
-	char buffer[100];
+	char buffer[12];
 	int j;
 
 	if (n < 0)
@@ -20,6 +20,7 @@ int toInt(va_list value)
 		n = -n;
 		i++;
 	}
+
 	if (n == 0)
 	{
 		_putchar('0');
@@ -39,7 +40,6 @@ int toInt(va_list value)
 		buffer[j] = (n % 10) + '0';
 		n /= 10;
 	}
-
 	for (j = 0; j < num_digits; j++)
 	{
 		_putchar(buffer[j]);
