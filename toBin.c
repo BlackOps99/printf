@@ -4,8 +4,6 @@
  * @value: unsigned integer
  * Return: binary
  */
-int countBits(unsigned int num);
-
 int toBin(va_list value)
 {
 	unsigned int result = va_arg(value, unsigned int);
@@ -17,10 +15,12 @@ int toBin(va_list value)
 	for (i = 31; i >= 0; i--)
 	{
 		char bit = ((result >> i) & 1) + '0';
+
 		if (bit == '1')
 		{
 			leadingZero = 0;
 		}
+
 		if (!leadingZero)
 		{
 			_putchar(bit);
@@ -38,10 +38,12 @@ int toBin(va_list value)
 int countBits(unsigned int num)
 {
 	int count = 0;
+
 	while (num > 0)
 	{
 		count++;
 		num >>= 1;
 	}
-	return count;
+
+	return (count);
 }
