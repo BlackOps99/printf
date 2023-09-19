@@ -54,7 +54,7 @@ int isCharInArray(char searchValue)
 {
 	int i = 0;
 
-	char array[5] = {
+	char array[6] = {
 	    'c',
 	    's',
 	    '%',
@@ -62,7 +62,7 @@ int isCharInArray(char searchValue)
 	    'i',
 	    'b'};
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 6; i++)
 	{
 		if (array[i] == searchValue)
 		{
