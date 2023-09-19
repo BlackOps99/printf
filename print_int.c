@@ -1,5 +1,22 @@
 #include "main.h"
 /**
+ * countDigits - calculate the number of digits in an integer
+ * @n: The integer
+ * Return: The number of digits
+ */
+int countDigits(int n)
+{
+	int count = 0;
+
+	while (n != 0)
+	{
+		n /= 10;
+		count++;
+	}
+
+	return (count);
+}
+/**
  * toInt - Print an integer as a string
  * @value: The integer
  *
@@ -7,43 +24,44 @@
  */
 int toInt(va_list value)
 {
-	int n = va_arg(value, int);
-	int i = 0;
-	int num_digits = 0;
-	int temp = n;
-	char buffer[12];
-	int j;
+	int num = va_arg(value, int);
+	int numDigits, isNegative, i, index;
+	char *buffer;
 
-	if (n < 0)
+	if (num == 0)
 	{
-		_putchar('-');
-		n = -n;
-		i++;
-	}
-	if (n == 0)
-	{
-		_putchar('0');
+		putchar('0');
 		return (1);
 	}
 
-	while (temp != 0)
+	if (num < 0)
 	{
-		temp /= 10;
-		num_digits++;
+		isNegative = 1;
+		num = -num;
 	}
 
-	buffer[num_digits] = '\0';
+	numDigits = countDigits(num);
+	buffer = (char *)malloc((numDigits + isNegative + 1) * sizeof(char));
 
-	for (j = num_digits - 1; j >= 0; j--)
+	if (buffer == NULL)
+		return (0);
+
+	index = numDigits + isNegative;
+
+	while (num > 0)
 	{
-		buffer[j] = (n % 10) + '0';
-		n /= 10;
+		buffer[index] = '0' + (num % 10);
+		num /= 10;
+		index--;
 	}
 
-	for (j = 0; j < num_digits; j++)
+	if (isNegative)
+		buffer[0] = '-';
+
+	for (i = 0; i < numDigits + isNegative; i++)
 	{
-		_putchar(buffer[j]);
-		i++;
+		_putchar(buffer[i]);
 	}
-	return (i);
+	free(buffer);
+	return (numDigits + isNegative);
 }
